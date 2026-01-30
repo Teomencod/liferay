@@ -16,11 +16,12 @@
             this.shadowRoot.innerHTML = `
                 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
                             color: white; padding: 30px; border-radius: 15px; text-align: center;
-                            font-family: sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                            font-family: sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                            margin: 20px;">
                     <h1>🚀 ¡Hola desde GitHub!</h1>
                     <p>Liferay 7.4 + Custom Element</p>
-                    <button style="padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer;" 
-                            onclick="alert('Funciona!')">Probar</button>
+                    <button style="padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer; font-weight: bold;" 
+                            onclick="alert('¡Funciona perfectamente!')">Probar Botón</button>
                 </div>
             `;
         }
