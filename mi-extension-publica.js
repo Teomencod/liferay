@@ -1,4 +1,4 @@
-// mi-extension-publica.js - Para Liferay Custom Element
+﻿// mi-extension-publica.js - Para Liferay Custom Element
 (function() {
     console.log("📦 Cargando Client Extension pública...");
     
