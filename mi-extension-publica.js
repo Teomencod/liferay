@@ -7,7 +7,6 @@
         return;
     }
     
-    // Definir la clase
     class MiExtensionLiferay extends HTMLElement {
         constructor() {
             super();
@@ -40,11 +39,7 @@
                         box-shadow: 0 20px 60px rgba(0,0,0,0.3);
                         text-align: center;
                     }
-                    .extension-title {
-                        font-size: 2em;
-                        margin-bottom: 15px;
-                        font-weight: bold;
-                    }
+                    .extension-title { font-size: 2em; margin-bottom: 15px; font-weight: bold; }
                     .extension-status {
                         background: rgba(255,255,255,0.2);
                         padding: 10px 20px;
@@ -91,32 +86,32 @@
                         • Plataforma: Liferay DXP 7.4
                     </div>
                     
-                    <button class="extension-button" onclick="this.parentElement.dispatchEvent(new CustomEvent('extension-action', {detail: {action: 'test'}}))">
-                        Probar Función
-                    </button>
-                    <button class="extension-button" onclick="alert('🎊 ¡Client Extension funcionando correctamente!\\n\\nEsta extensión fue creada completamente en Windows y ahora está activa en Liferay 7.4.')">
-                        Ver Mensaje
-                    </button>
+                    <button class="btn-action extension-button">Probar Función</button>
+                    <button class="btn-alert extension-button">Ver Mensaje</button>
                 </div>
             `;
 
-            // Agregar eventos
-            this.shadowRoot.querySelector('.extension-container').addEventListener('extension-action', (e) => {
-                console.log('Acción de extensión:', e.detail);
+            // Manejo de eventos interno
+            this.shadowRoot.querySelector('.btn-action').addEventListener('click', () => {
+                console.log('Acción ejecutada');
                 this.dispatchEvent(new CustomEvent('liferay-extension-event', {
-                    detail: { type: 'user-action', data: e.detail },
-                    bubbles: true
+                    detail: { type: 'user-action', data: 'test' },
+                    bubbles: true,
+                    composed: true
                 }));
+            });
+
+            this.shadowRoot.querySelector('.btn-alert').addEventListener('click', () => {
+                alert('🎊 ¡Client Extension funcionando!\n\nCreada en Windows y activa en Liferay 7.4.');
             });
         }
     }
 
-    // Registrar el elemento
     const elementName = 'mi-extension-liferay';
     if (!customElements.get(elementName)) {
         customElements.define(elementName, MiExtensionLiferay);
-        console.log(\`✅ Custom Element "\${elementName}" registrado\`);
+        console.log('✅ Custom Element registrado: ' + elementName);
     } else {
-        console.warn(\`⚠️  Custom Element "\${elementName}" ya está registrado\`);
+        console.warn('⚠️ El elemento ya estaba registrado');
     }
 })();
